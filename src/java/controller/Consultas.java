@@ -14,44 +14,44 @@ import java.sql.ResultSet;
  */
 public class Consultas extends Conexion {
 
-    public boolean autenticacion(String uname, String pass ) {
-        PreparedStatement pst = null;
-        ResultSet rs = null;
-
-        try {
-            String consulta = "Select * from members where uname = ? and pass = ? ";
-            pst = getConexion().prepareStatement(consulta);
-            pst.setString(1, uname);
-            pst.setString(2, pass);
-           // pst.setString(3, rango);  , String rango and rango = ? 
-            rs = pst.executeQuery();
-
-            if (rs.absolute(1)) {
-                return true;
-            }
-
-        } catch (Exception e) {
-            System.err.println("Error" + e);
-
-        } finally {
-            try {
-                if (getConexion() != null) {
-                    getConexion().close();
-                }
-                if (pst != null) {
-                    pst.close();
-                }
-                if (rs != null) {
-                    rs.close();
-                }
-            } catch (Exception ex) {
-
-            }
-
-        }
-
-        return false;
-    }
+//    public boolean autenticacion(String uname, String pass ) {
+//        PreparedStatement pst = null;
+//        ResultSet rs = null;
+//
+//        try {
+//            String consulta = "Select * from members where uname = ? and pass = ? ";
+//            pst = getConexion().prepareStatement(consulta);
+//            pst.setString(1, uname);
+//            pst.setString(2, pass);
+//           // pst.setString(3, rango);  , String rango and rango = ? 
+//            rs = pst.executeQuery();
+//
+//            if (rs.absolute(1)) {
+//                return true;
+//            }
+//
+//        } catch (Exception e) {
+//            System.err.println("Error" + e);
+//
+//        } finally {
+//            try {
+//                if (getConexion() != null) {
+//                    getConexion().close();
+//                }
+//                if (pst != null) {
+//                    pst.close();
+//                }
+//                if (rs != null) {
+//                    rs.close();
+//                }
+//            } catch (Exception ex) {
+//
+//            }
+//
+//        }
+//
+//        return false;
+//    }
 
     public boolean registrar(String firstname, String lastname, String email, String uname, String pass, String rango) {
         PreparedStatement pst = null;
