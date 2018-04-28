@@ -60,15 +60,15 @@ public class InicioSesion extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("marca", uname);
                 request.setAttribute("uname", uname);
-                //request.getRequestDispatcher("/mainpage.html").forward(request, response);
-                response.sendRedirect("marcaPage.jsp");
+                request.getRequestDispatcher("marcaPage.jsp").forward(request, response);
+                //response.sendRedirect("marcaPage.jsp");
             } else if (autenticar.equals("influencer_Role")) {
                 System.out.println("Influencer's Home");
                 HttpSession session = request.getSession();
                 session.setAttribute("influencer", uname);
                 request.setAttribute("uname", uname);
-                //request.getRequestDispatcher("/mainpage.html").forward(request, response);
-                response.sendRedirect("influencerPage.jsp");
+                request.getRequestDispatcher("influencerPage.jsp").forward(request, response);
+                 //response.sendRedirect("influencerPage.jsp");
             } else {
                 response.sendRedirect("error.jsp");
             }
