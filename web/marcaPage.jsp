@@ -38,29 +38,5 @@
                 <input type="submit" value="Agregar campaña"/>
             </fieldset>
         </form>
-        <h1>Consulta a base de datos</h1>
-        <table border="1">
-            <tr>
-                <td>id</td>
-                <td>nombre</td>
-                <td>apellido</td>
-                <td>telefono</td>
-            </tr>
-            <%
-                LinkedList<Producto> lista = Consultas.getProducto();
-                for (int i = 0; i < lista.size(); i++) {
-                    out.println("<tr>");
-                    
-                    out.println("<td>" + lista.get(i).getNombre() + "</td>");
-                    out.println("<td>" + lista.get(i).getCategoria() + "</td>");
-                    out.println("<td>" + lista.get(i).getDescripcion() + "</td>");
-                    out.println("</tr>");
-                }
-            %>
-        </table>
-
-
-
-
-    </body>
+     </body>
 </html>
