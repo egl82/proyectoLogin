@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import DAO.InicioSesionDAO;
 import controller.Consultas;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,6 +13,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Members;
 
 /**
  *
@@ -31,27 +34,56 @@ public class InicioSesion extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter(); 
-        
+        PrintWriter out = response.getWriter();
+
         String uname = request.getParameter("usuario");
-        String pass = request.getParameter("pass"); 
-        String rango = request.getParameter("rango"); 
+        String pass = request.getParameter("pass");
+        // String rango = request.getParameter("rango"); 
+        Members members = new Members();
+        members.setUname(uname);
+        members.setPass(pass);
+        InicioSesionDAO inicioSesionDAO = new InicioSesionDAO();
+
         try {
-        
-                Consultas co = new Consultas(); 
-        if(co.autenticacion(uname, pass )){
-            response.sendRedirect("welcomepage.jsp");
-        }else {
-            response.sendRedirect("error.jsp");
-        }
-        
-        
+            String autenticar = inicioSesionDAO.autenticar(members);
+
+            if (autenticar.equals("Admin_Role")) {
+                System.out.println("Administrador");
+                HttpSession session = request.getSession();
+                session.setAttribute("admin", uname);
+                request.setAttribute("uname", uname);
+                // request.getRequestDispatcher("welcomepage.jsp").forward(request, response);
+                response.sendRedirect("adminPage.jsp");
+
+            } else if (autenticar.equals("marca_Role")) {
+                System.out.println("marca's Home");
+                HttpSession session = request.getSession();
+                session.setAttribute("marca", uname);
+                request.setAttribute("uname", uname);
+                request.getRequestDispatcher("marcaPage.jsp").forward(request, response);
+                //response.sendRedirect("marcaPage.jsp");
+            } else if (autenticar.equals("influencer_Role")) {
+                System.out.println("Influencer's Home");
+                HttpSession session = request.getSession();
+                session.setAttribute("influencer", uname);
+                request.setAttribute("uname", uname);
+                request.getRequestDispatcher("influencerPage.jsp").forward(request, response);
+                 //response.sendRedirect("influencerPage.jsp");
+            } else {
+                response.sendRedirect("error.jsp");
+            }
+
+//                Consultas co = new Consultas(); 
+//        if(co.autenticacion(uname, pass )){
+//            response.sendRedirect("welcomepage.jsp");
+//        }else {
+//            response.sendRedirect("error.jsp");
+//        }
+//        
         } catch (Exception ex) {
-            
+
         }
 
-        
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

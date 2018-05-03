@@ -40,7 +40,7 @@ public class agregarProducto extends HttpServlet {
         Consultas co = new Consultas(); 
         
         if(co.addproducto(producto, categoria, descripcion)) {
-            response.sendRedirect("pruebaMarca.html");
+            response.sendRedirect("marcaPage.jsp");
                 
         }else{
             response.sendRedirect("welcomepage.jsp");

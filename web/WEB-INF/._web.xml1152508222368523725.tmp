@@ -12,7 +12,6 @@
         <servlet-name>agregarProducto</servlet-name>
         <servlet-class>servlets.agregarProducto</servlet-class>
     </servlet>
-   
     <servlet-mapping>
         <servlet-name>InicioSesion</servlet-name>
         <url-pattern>/iniciar</url-pattern>
@@ -27,15 +26,13 @@
     </servlet-mapping>
     
     
-    <welcome-file-list>
+     <welcome-file-list>
         <welcome-file>mainpage.html</welcome-file>
     </welcome-file-list>
-   
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
    
-    </web-app>
-
+</web-app>

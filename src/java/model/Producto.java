@@ -57,7 +57,11 @@ private String descripcion;
         this.categoria = categoria;
         this.descripcion = descripcion;
     }
-
+    public Producto (String nombre, String categoria, String descripcion){
+         this.nombre = nombre;
+        this.categoria = categoria;
+        this.descripcion = descripcion;
+    }
     @Override
     public String toString() {
         return "Producto{" + "idproducto=" + idproducto + ", nombre=" + nombre + ", categoria=" + categoria + ", descripcion=" + descripcion + '}';

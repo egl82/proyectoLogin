@@ -37,11 +37,11 @@ public class InicioSesionDAO {
                 userNameDB = resultSet.getString("uname");
                 passwordDB = resultSet.getString("pass");
                 roleDB = resultSet.getString("rango");
-                if (uname.equals(userNameDB) && pass.equals(passwordDB) && roleDB.equals("Admin")) {
+                if (uname.equals(userNameDB) && pass.equals(passwordDB) && roleDB.equals("admin")) {
                     return "Admin_Role";
-                } else if (uname.equals(userNameDB) && pass.equals(passwordDB) && roleDB.equals("Editor")) {
+                } else if (uname.equals(userNameDB) && pass.equals(passwordDB) && roleDB.equals("marca")) {
                     return "marca_Role";
-                } else if (uname.equals(userNameDB) && pass.equals(passwordDB) && roleDB.equals("User")) {
+                } else if (uname.equals(userNameDB) && pass.equals(passwordDB) && roleDB.equals("influencer")) {
                     return "influencer_Role";
                 }
             }
